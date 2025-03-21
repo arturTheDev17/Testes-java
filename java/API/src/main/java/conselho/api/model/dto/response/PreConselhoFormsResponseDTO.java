@@ -1,0 +1,15 @@
+package conselho.api.model.dto.response;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PreConselhoFormsResponseDTO implements ResponseDTO{
+    Long id;
+    String pontosFortes;
+    String oportunidadesMelhorias;
+    String sugestoes;
+}

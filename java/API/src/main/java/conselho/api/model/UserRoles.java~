@@ -1,0 +1,23 @@
+package conselho.api.model;
+
+public enum UserRoles {
+    ADMIN,
+    PROFESSOR,
+    ALUNO ,
+    T_PEDAGOGICO ,
+    C_PEDAGOGICO ,
+    SUPERVISOR;
+
+    UserRoles() {
+        ADMIN = 0;
+    }
+
+    public String getRole() {
+        return this.name();
+    }
+
+    public static UserRoles getRole(String role) {
+        return UserRoles.valueOf(role);
+    }
+
+}

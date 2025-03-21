@@ -1,0 +1,39 @@
+package conselho.api.model.dto.mapper;
+
+import conselho.api.model.dto.request.TurmaRequestDTO;
+import conselho.api.model.dto.response.TurmaResponseDTO;
+import conselho.api.model.dto.response.UsuarioResponseDTO;
+import conselho.api.model.entity.Turma;
+import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+@AllArgsConstructor
+public class TurmaMapper {
+
+    private ModelMapper mapper;
+
+    public TurmaResponseDTO toResponse(Turma turma ) {
+        return mapper.map(turma, TurmaResponseDTO.class);
+    }
+
+    public Turma toTurma(TurmaRequestDTO turma) {
+        return mapper.map( turma, Turma.class );
+    }
+
+    public List<UsuarioResponseDTO> toResponse(  )
+
+    public Page<TurmaResponseDTO> toResponse(Page<Turma> conselhos ) {
+
+        List<TurmaResponseDTO> conselhosDtoList = conselhos.getContent().stream()
+                .map(this::toResponse).toList();
+
+        return new PageImpl<>(conselhosDtoList, conselhos.getPageable(), conselhos.getTotalPages());
+
+    }
+}

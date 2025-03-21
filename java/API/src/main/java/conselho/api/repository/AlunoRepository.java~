@@ -1,0 +1,10 @@
+package conselho.api.repository.usuarioRepository;
+
+import conselho.api.model.entity.Aluno;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AlunoRepository extends JpaRepository<Aluno, Long> {
+    Aluno findByEmail(String email);
+
+    boolean existsByEmail(String email);
+}

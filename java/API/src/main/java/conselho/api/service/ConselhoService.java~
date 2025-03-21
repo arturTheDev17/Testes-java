@@ -1,0 +1,73 @@
+package conselho.api.service;
+
+import conselho.api.model.UsuarioRoles;
+import conselho.api.model.dto.mapper.ConselhoMapper;
+import conselho.api.model.dto.mapper.UsuarioMapper;
+import conselho.api.model.dto.request.ConselhoRequestDTO;
+import conselho.api.model.dto.request.UsuarioRequestDTO;
+import conselho.api.model.dto.response.ConselhoResponseDTO;
+import conselho.api.model.dto.response.UsuarioResponseDTO;
+import conselho.api.model.entity.Conselho;
+import conselho.api.model.entity.Turma;
+import conselho.api.model.entity.Conselho;
+import conselho.api.model.entity.Usuario;
+import conselho.api.repository.ConselhoRepository;
+import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
+
+@AllArgsConstructor
+@Service
+public class ConselhoService {
+
+    private ConselhoRepository repository;
+    private ConselhoMapper mapper;
+    private UsuarioService usuarioService;
+
+    public ConselhoResponseDTO addConselho(ConselhoRequestDTO conselho) {
+        return mapper.toResponse(repository.save(mapper.toConselho(conselho)));
+    }
+
+    //FIXME revisar isso quando for aplicar
+    public boolean addProfessorConselho(Long professorId, Long conselhoId) {
+
+        return findById(conselhoId).getProfessores().
+                add(usuarioService.
+                        findByRole(UsuarioRoles.PROFESSOR, professorId));
+    }
+
+    public boolean removeProfessorConselho( Long professorId , Long conselhoId ) {
+        return findById(conselhoId).getProfessores().
+                remove( usuarioService.
+                        findByRole( UsuarioRoles.PROFESSOR , professorId ) );
+    }
+
+    public void delete(Long id) {
+        Conselho conselho = findById(id);
+        repository.delete(conselho);
+    }
+
+    public Conselho findById(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Conselho não encontado"));
+    }
+
+    public ConselhoResponseDTO update(Long id, Conselho conselho) {
+        Conselho existente = findById(id);
+        conselho.setId(existente.getId());
+        return mapper.toResponse(repository.save(conselho));
+    }
+
+    public Page<ConselhoResponseDTO> findAll(Pageable pageable) {
+        return mapper.toResponse(repository.findAll(pageable));
+    }
+
+}
