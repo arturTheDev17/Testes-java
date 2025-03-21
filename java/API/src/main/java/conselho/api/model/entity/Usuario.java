@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Usuario {
 
-    @Enumerated(EnumType.STRING) //ARTUR: não sei se é bom fazer isso
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UsuarioRoles role;
 
@@ -32,9 +32,6 @@ public class Usuario {
     private List<Turma> turmas;
 
     private String matricula;
-
-//    @Column( nullable = false )
-//    private String senha;
 
 
 }

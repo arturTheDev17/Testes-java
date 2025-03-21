@@ -3,6 +3,7 @@ package conselho.api.controller;
 import conselho.api.model.dto.request.NotificacaoRequestDTO;
 import conselho.api.model.dto.response.NotificacaoResponseDTO;
 import conselho.api.service.NotificacaoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;

@@ -1,0 +1,139 @@
+package conselho.api.service;
+
+import conselho.api.model.entity.Log;
+import conselho.api.service.LogService;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+    private final LogService logService;
+
+    public LoggingAspect(LogService logService) {
+        this.logService = logService;
+    }
+
+    // Pointcut para capturar todos os métodos save*()
+    @Pointcut("execution(* conselho.api.service.*.save*(..))")
+    public void saveMethods() {}
+
+    // Pointcut para capturar todos os métodos update*()
+    @Pointcut("execution(* conselho.api.service.*.update*(..))")
+    public void updateMethods() {}
+
+    // Pointcut para capturar todos os métodos delete*()
+    @Pointcut("execution(* conselho.api.service.*.delete*(..))")
+    public void deleteMethods() {}
+
+    // Pointcut para capturar todos os métodos get*()
+    @Pointcut("execution(* conselho.api.service.*.get*(..))")
+    public void getMethods() {}
+
+    // Pointcut para capturar todos os métodos patch*()
+    @Pointcut("execution(* conselho.api.service.*.patch*(..))")
+    public void patchMethods() {}
+
+    // Antes de qualquer operação de criação (save), registre a ação
+    @Before("saveMethods()")
+    public void logBeforeSave(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        String entityName = args.length > 0 ? args[0].getClass().getSimpleName() : "Entidade";
+        String message = "Criando a entidade " + entityName + " com dados: " + args[0];
+        String actionType = "CREATE";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Após qualquer operação de criação (save), registre a ação
+    @After("saveMethods()")
+    public void logAfterSave(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String message = "Ação de " + methodName + " concluída com sucesso.";
+        String actionType = "CREATE";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Antes de qualquer operação de atualização (update), registre a ação
+    @Before("updateMethods()")
+    public void logBeforeUpdate(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        String entityName = args.length > 0 ? args[0].getClass().getSimpleName() : "Entidade";
+        String message = "Atualizando a entidade " + entityName + " com dados: " + args[0];
+        String actionType = "UPDATE";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Após qualquer operação de atualização (update), registre a ação
+    @After("updateMethods()")
+    public void logAfterUpdate(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String message = "Ação de " + methodName + " concluída com sucesso.";
+        String actionType = "UPDATE";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Antes de qualquer operação de deleção (delete), registre a ação
+    @Before("deleteMethods()")
+    public void logBeforeDelete(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        String entityName = args.length > 0 ? args[0].getClass().getSimpleName() : "Entidade";
+        String message = "Deletando a entidade " + entityName + " com identificador: " + args[0];
+        String actionType = "DELETE";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Após qualquer operação de deleção (delete), registre a ação
+    @After("deleteMethods()")
+    public void logAfterDelete(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String message = "Ação de " + methodName + " concluída com sucesso.";
+        String actionType = "DELETE";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Antes de qualquer operação GET (consulta), registre a ação
+    @Before("getMethods()")
+    public void logBeforeGet(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String message = "Consultando dados com o método: " + methodName;
+        String actionType = "GET";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Após qualquer operação GET (consulta), registre a ação
+    @After("getMethods()")
+    public void logAfterGet(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String message = "Consulta com o método " + methodName + " concluída com sucesso.";
+        String actionType = "GET";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Antes de qualquer operação PATCH (atualização parcial), registre a ação
+    @Before("patchMethods()")
+    public void logBeforePatch(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        String entityName = args.length > 0 ? args[0].getClass().getSimpleName() : "Entidade";
+        String message = "Atualizando parcialmente a entidade " + entityName + " com dados: " + args[0];
+        String actionType = "PATCH";
+        logService.logAction(actionType + " | " + message);
+    }
+
+    // Após qualquer operação PATCH (atualização parcial), registre a ação
+    @After("patchMethods()")
+    public void logAfterPatch(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String message = "Ação de " + methodName + " concluída com sucesso.";
+        String actionType = "PATCH";
+        logService.logAction(actionType + " | " + message);
+    }
+}

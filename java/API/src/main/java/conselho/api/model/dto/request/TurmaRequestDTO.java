@@ -15,6 +15,5 @@ public class TurmaRequestDTO implements RequestDTO {
 
     @NotBlank private String codigoTurma;
     @NotBlank private String nomeCurso;
-//    @NotNull Date dataCriacao;
     private List<UsuarioRequestDTO> usuarios;
 }

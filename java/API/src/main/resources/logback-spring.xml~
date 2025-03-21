@@ -1,0 +1,41 @@
+<configuration>
+
+    <!-- Definindo o layout de cores -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Formatando o log para colorir a saída no terminal -->
+            <pattern>
+                <![CDATA[
+                %d{yyyy-MM-dd HH:mm:ss} [%highlight(%-5level)] [%thread] %cyan(%logger{36}) - %msg%n
+                ]]>
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configuração do logger para console -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Definindo loggers específicos com nível de log detalhado -->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="com.seu.pacote" level="DEBUG" />
+
+    <!-- Opcional: você pode também configurar o log em arquivo -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/app.log</file>
+        <encoder>
+            <pattern>
+                <![CDATA[
+                %d{yyyy-MM-dd HH:mm:ss} - %-5level - %msg%n
+                ]]>
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

@@ -1,0 +1,4 @@
+package conselho.api.repository;
+
+public interface LogRepository {
+}

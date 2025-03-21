@@ -14,38 +14,41 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class TurmaService {
 
-    private TurmaRepository repository;
+    private final TurmaRepository turmaRepository;
     private TurmaMapper mapper;
 
-    public TurmaResponseDTO postTurma(TurmaRequestDTO dto) {
-        return mapper.toResponse(repository.save(mapper.toTurma(dto)));
+    public TurmaResponseDTO adicionarTurma(TurmaRequestDTO dto) {
+        return mapper.toResponse(turmaRepository.save(mapper.toTurma(dto)));
     }
 
-    public Turma buscarTurma(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new
-                        NoSuchElementException("Turma não encontrada"));
+    public Turma buscarTurma(UUID uuid) {
+        return (Turma) turmaRepository.findByUUID(uuid).orElseThrow(() -> new NoSuchElementException("Turma não encontrada"));
     }
 
-    public TurmaResponseDTO findById(Long id) {
-        return mapper.toResponse(buscarTurma(id));
+    public TurmaResponseDTO atualizarTurma(UUID uuid, TurmaRequestDTO dto) {
+        return mapper.toResponse(turmaRepository.save(mapper.toTurma(dto)));
+    }
+
+    public TurmaResponseDTO buscarTurmaPorNome(String nome) {
+        return (TurmaResponseDTO) turmaRepository.findByNomeTurma(nome).orElseThrow(() -> new NoSuchElementException("Turma nao encontrada"));
+    }
+
+    public TurmaResponseDTO buscarTurmaPorId(UUID uuid) {
+        return mapper.toResponse(buscarTurma(uuid));
     }
 
     public Page<TurmaResponseDTO> findAll(Pageable pageable) {
-        return mapper.toResponse(repository.findAll(pageable));
+        return mapper.toResponse(turmaRepository.findAll(pageable));
     }
 
-    public void removerTurma(Long id) {
-        repository.deleteById(id);
+    public void removerTurma(UUID uuid) {
+        turmaRepository.deleteById(uuid);
     }
 
-    public TurmaResponseDTO updateTurma(Long id, TurmaRequestDTO dto) {
-        return mapper.toResponse(repository.save(mapper.toTurma(dto)));
-    }
-    
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -13,11 +14,11 @@ import java.util.List;
 @NoArgsConstructor
 public class Turma {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID uuid;
 
     @Column(nullable = false)
-    private String codigoTurma; //ex: mi, mm, me
+    private String codigoTurma;
 
     @Column(nullable = false)
     private String nomeCurso;

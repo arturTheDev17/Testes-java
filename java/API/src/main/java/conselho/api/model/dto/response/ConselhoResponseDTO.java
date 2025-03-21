@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ConselhoResponseDTO implements ResponseDTO {
 
-    Long id;
+     Long id;
      Date dataInicio;
      Date dataFim;
      List<Usuario> professores;
