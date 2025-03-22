@@ -29,4 +29,7 @@ public class Mensagem {
 
     @Column(nullable = false)
     private LocalDateTime dataEnvio;
+
+    @ManyToOne //TODO ARRUMAR DTO
+    private SalaChat salaChat;
 }

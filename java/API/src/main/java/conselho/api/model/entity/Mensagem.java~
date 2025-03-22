@@ -1,4 +1,0 @@
-package conselho.api.model.entity;
-
-public class Mensagem {
-}

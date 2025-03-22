@@ -36,7 +36,7 @@ public class ChatService {
         // Buscar a sala de chat com base no ID
         SalaChat salaChat = salaChatRepository.findById(mensagemDTO.getSalaChatId())
                 .orElseThrow(() -> new RuntimeException("Sala de chat não encontrada"));
-
+        
         // Buscar o remetente
         Usuario remetente = usuarioRepository.findById(mensagemDTO.getRemetenteId())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
