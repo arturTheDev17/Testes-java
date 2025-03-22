@@ -615,3 +615,35 @@
 2025-03-22T10:38:24.355-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-03-22T10:38:24.359-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 
+2025-03-22T12:36:16.255-03:00  INFO 18260 --- [api] [main] conselho.api.ApiApplication              : Starting ApiApplication using Java 22.0.2 with PID 18260 (C:\Users\artur\Documents\GitHub\Testes-java\java\API\target\classes started by artur in C:\Users\artur\Documents\GitHub\Testes-java\java\API)
+2025-03-22T12:36:16.257-03:00  INFO 18260 --- [api] [main] conselho.api.ApiApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-03-22T12:36:16.690-03:00  INFO 18260 --- [api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-22T12:36:16.738-03:00  INFO 18260 --- [api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 5 JPA repository interfaces.
+2025-03-22T12:36:17.218-03:00  INFO 18260 --- [api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8099 (http)
+2025-03-22T12:36:17.229-03:00  INFO 18260 --- [api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-22T12:36:17.229-03:00  INFO 18260 --- [api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-22T12:36:17.268-03:00  INFO 18260 --- [api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-22T12:36:17.268-03:00  INFO 18260 --- [api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 985 ms
+2025-03-22T12:36:17.395-03:00  INFO 18260 --- [api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-22T12:36:17.448-03:00  INFO 18260 --- [api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-22T12:36:17.474-03:00  INFO 18260 --- [api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-22T12:36:17.678-03:00  INFO 18260 --- [api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-22T12:36:17.701-03:00  INFO 18260 --- [api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-22T12:36:17.923-03:00  INFO 18260 --- [api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23bd2f6e
+2025-03-22T12:36:17.925-03:00  INFO 18260 --- [api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-22T12:36:17.986-03:00  INFO 18260 --- [api] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-22T12:36:18.672-03:00  INFO 18260 --- [api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-22T12:36:18.725-03:00  INFO 18260 --- [api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-22T12:36:19.239-03:00  WARN 18260 --- [api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-22T12:36:19.579-03:00  INFO 18260 --- [api] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-03-22T12:36:19.579-03:00  INFO 18260 --- [api] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5afbbf9b]]
+2025-03-22T12:36:19.580-03:00  INFO 18260 --- [api] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-03-22T12:36:19.593-03:00  INFO 18260 --- [api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8099 (http) with context path '/'
+2025-03-22T12:36:19.598-03:00  INFO 18260 --- [api] [main] conselho.api.ApiApplication              : Started ApiApplication in 3.652 seconds (process running for 4.138)
