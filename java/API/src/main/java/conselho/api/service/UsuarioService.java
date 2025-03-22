@@ -36,12 +36,12 @@ public class UsuarioService {
     }
 
     // Buscar por ID (retorna DTO)
-    public UsuarioResponseDTO findById(Long id) {
-        return mapper.toResponse(getById(id));
+    public UsuarioResponseDTO getById(Long id) {
+        return mapper.toResponse(findById(id));
     }
 
     // Buscar entidade por ID (uso interno)
-    public Usuario getById(Long id) {
+    public Usuario findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado"));
     }
@@ -59,7 +59,7 @@ public class UsuarioService {
 
     // Atualizar usuário por ID
     public UsuarioResponseDTO update(Long id, UsuarioRequestDTO usuarioDTO) {
-        Usuario existente = getById(id);
+        Usuario existente = findById(id);
 
         // Evitar duplicidade de email se for atualizado
         if (!existente.getEmail().equalsIgnoreCase(usuarioDTO.getEmail()) && existsByEmail(usuarioDTO.getEmail())) {
@@ -92,7 +92,7 @@ public class UsuarioService {
     }
 
     // Listar todos os usuários paginados
-    public Page<UsuarioResponseDTO> findAll(Pageable pageable) {
+    public Page<UsuarioResponseDTO> getAll(Pageable pageable) {
         return mapper.toResponse(repository.findAll(pageable));
     }
 
@@ -114,7 +114,7 @@ public class UsuarioService {
 
     // Deletar por ID
     public void delete(Long id) {
-        Usuario usuario = getById(id);
+        Usuario usuario = findById(id);
         repository.delete(usuario);
     }
 
