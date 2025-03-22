@@ -15,7 +15,6 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-import java.net.http.WebSocket;
 import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON;
@@ -33,22 +32,28 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
+        // Configuração do broker para usar tópicos como destinos de mensagens
         registry.enableSimpleBroker("/topic"); // Permitindo tópicos públicos
-        registry.setApplicationDestinationPrefixes("/app");
+        registry.setApplicationDestinationPrefixes("/app"); // Prefixo para destinos da aplicação
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").setAllowedOrigins("http://localhost:3000").withSockJS();
+        // Configuração do endpoint WebSocket
+        registry.addEndpoint("/ws")  // Caminho para o WebSocket
+                .setAllowedOrigins("http://localhost:3000")  // Permite conexões do front-end React
+                .withSockJS();  // Configuração para usar SockJS, que permite fallback em alguns casos
     }
 
     @Override
     public boolean configureMessageConverters(List<MessageConverter> messageConverters) {
         DefaultContentTypeResolver resolver = new DefaultContentTypeResolver();
-        resolver.setDefaultMimeType(APPLICATION_JSON);
+        resolver.setDefaultMimeType(APPLICATION_JSON);  // Definindo o tipo MIME como JSON
+
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setObjectMapper(new ObjectMapper());
         converter.setContentTypeResolver(resolver);
+
         messageConverters.add(converter);
         return true;
     }
