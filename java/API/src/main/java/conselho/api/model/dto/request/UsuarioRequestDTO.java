@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UsuarioRequestDTO implements RequestDTO {
 
+
   @NotNull
   private UsuarioRoles role;
 

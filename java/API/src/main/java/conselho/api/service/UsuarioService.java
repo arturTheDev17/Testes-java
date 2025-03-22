@@ -5,6 +5,8 @@ import conselho.api.model.dto.mapper.UsuarioMapper;
 import conselho.api.model.dto.request.UsuarioRequestDTO;
 import conselho.api.model.dto.response.UsuarioResponseDTO;
 import conselho.api.model.entity.Usuario;
+import conselho.api.notification.Notification;
+import conselho.api.notification.NotificationStatus;
 import conselho.api.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,12 +14,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 
+import static conselho.api.notification.NotificationStatus.BOROWED;
+import static conselho.api.notification.NotificationStatus.CREATED;
+
 @Service
 @AllArgsConstructor
 public class UsuarioService {
 
     private final UsuarioRepository repository;
     private final UsuarioMapper mapper;
+    private final NotificationService notificationService;
 
     // Salvar novo usuário com validação de email
     public UsuarioResponseDTO save(UsuarioRequestDTO usuarioDTO) {
@@ -25,6 +31,7 @@ public class UsuarioService {
             throw new IllegalArgumentException("Email já cadastrado");
         }
         Usuario usuario = mapper.toUsuario(usuarioDTO);
+        notificationService.sendNotification(usuario.getNome(), Notification.builder().status(CREATED).message(" Usuário cadastrado").build());
         return mapper.toResponse(repository.save(usuario));
     }
 

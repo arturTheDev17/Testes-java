@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b0b7f92-b7fc-4dc9-a57d-ed7add9d0db8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/conselho/api/ApiApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/test/java/conselho/api/ApiApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="7b0b7f92-b7fc-4dc9-a57d-ed7add9d0db8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,9 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -45,9 +35,11 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/artur_hopner/Documents/GitHub/Plataforma-Conselho/java",
+    "last_opened_file_path": "C:/Users/Saymon/Documents/GitHub/Testes-java/java/API",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,6 +49,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,6 +67,7 @@
       <updated>1741884553814</updated>
       <workItem from="1741884554855" duration="399000" />
       <workItem from="1742229885231" duration="837000" />
+      <workItem from="1742650282036" duration="7000" />
     </task>
     <servers />
   </component>

@@ -574,3 +574,43 @@
 2025-03-21T19:09:04.912-03:00  INFO 3396 --- [api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-03-21T19:09:04.914-03:00  INFO 3396 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-03-21T19:09:04.919-03:00  INFO 3396 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-22T10:37:55.476-03:00  INFO 6436 --- [api] [main] conselho.api.ApiApplication              : Starting ApiApplication using Java 23.0.2 with PID 6436 (C:\Users\Saymon\Documents\GitHub\Testes-java\java\API\target\classes started by Saymon in C:\Users\Saymon\Documents\GitHub\Testes-java\java\API)
+2025-03-22T10:37:55.477-03:00  INFO 6436 --- [api] [main] conselho.api.ApiApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-03-22T10:37:56.088-03:00  INFO 6436 --- [api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-22T10:37:56.144-03:00  INFO 6436 --- [api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 6 JPA repository interfaces.
+2025-03-22T10:37:56.720-03:00  INFO 6436 --- [api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8099 (http)
+2025-03-22T10:37:56.733-03:00  INFO 6436 --- [api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-22T10:37:56.733-03:00  INFO 6436 --- [api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-22T10:37:56.775-03:00  INFO 6436 --- [api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-22T10:37:56.775-03:00  INFO 6436 --- [api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1260 ms
+2025-03-22T10:37:56.936-03:00  INFO 6436 --- [api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-22T10:37:57.015-03:00  INFO 6436 --- [api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-22T10:37:57.052-03:00  INFO 6436 --- [api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-22T10:37:57.312-03:00  INFO 6436 --- [api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-22T10:37:57.338-03:00  INFO 6436 --- [api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-22T10:37:57.963-03:00  INFO 6436 --- [api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3578a45b
+2025-03-22T10:37:57.964-03:00  INFO 6436 --- [api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-22T10:37:58.042-03:00  INFO 6436 --- [api] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-22T10:37:58.859-03:00  INFO 6436 --- [api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-22T10:37:59.424-03:00  INFO 6436 --- [api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-22T10:38:00.027-03:00  WARN 6436 --- [api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-22T10:38:00.416-03:00  INFO 6436 --- [api] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-03-22T10:38:00.417-03:00  INFO 6436 --- [api] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@ca31ad7]]
+2025-03-22T10:38:00.418-03:00  INFO 6436 --- [api] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-03-22T10:38:00.430-03:00  INFO 6436 --- [api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8099 (http) with context path '/'
+2025-03-22T10:38:00.434-03:00  INFO 6436 --- [api] [main] conselho.api.ApiApplication              : Started ApiApplication in 5.389 seconds (process running for 6.029)
+2025-03-22T10:38:24.347-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-22T10:38:24.350-03:00  INFO 6436 --- [api] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-22T10:38:24.352-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-03-22T10:38:24.352-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@ca31ad7]]
+2025-03-22T10:38:24.352-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-03-22T10:38:24.353-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-22T10:38:24.355-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-22T10:38:24.359-03:00  INFO 6436 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
