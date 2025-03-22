@@ -28,7 +28,7 @@ public class UsuarioController {
     // Buscar usuário por ID
     @GetMapping("/buscar/{id}")
     public ResponseEntity<UsuarioResponseDTO> buscarUsuarioPorId(@PathVariable Long id) {
-        UsuarioResponseDTO response = service.findById(id);
+        UsuarioResponseDTO response = service.getById(id);
         return ResponseEntity.ok(response); // Retorna 200 com o usuário
     }
 
@@ -56,7 +56,7 @@ public class UsuarioController {
     // Listar todos os usuários paginados
     @GetMapping("/listar")
     public ResponseEntity<Page<UsuarioResponseDTO>> listarUsuarios(Pageable pageable) {
-        Page<UsuarioResponseDTO> usuarios = service.findAll(pageable);
+        Page<UsuarioResponseDTO> usuarios = service.getAll(pageable);
         return ResponseEntity.ok(usuarios); // Retorna a lista de usuários paginados
     }
 

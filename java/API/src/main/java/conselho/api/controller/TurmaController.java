@@ -15,7 +15,7 @@ import jakarta.validation.Valid;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/turma")
+@RequestMapping("/api/turmas")
 @AllArgsConstructor
 public class TurmaController {
 
@@ -42,7 +42,7 @@ public class TurmaController {
         return new ResponseEntity<>(turmaService.buscarTurmaPorNome(nome), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todas")
     public ResponseEntity<Page<TurmaResponseDTO>> buscarTodasTurmas(@PageableDefault(size = 12) Pageable pageable) {
         return new ResponseEntity<>(turmaService.findAll(pageable), HttpStatus.OK);
     }

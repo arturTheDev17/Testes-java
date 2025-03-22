@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import org.springframework.web.util.NestedServletException;
 
 import java.time.Instant;
 import java.util.NoSuchElementException;
@@ -31,7 +30,7 @@ public class ExceptionHandlerController {
     // Tratamento de exceções relacionadas a erros de validação de entrada (por exemplo, falta de parâmetros ou dados inválidos)
     @ExceptionHandler({MethodArgumentNotValidException.class, MissingServletRequestParameterException.class})
     public ResponseEntity<ErrorResponseDTO> handleValidationException(MethodArgumentNotValidException exception) {
-        String errorMessage = exception.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
+        String errorMessage = exception.getBindingResult().getFieldErrors().getFirst().getDefaultMessage();
         ErrorResponseDTO error = new ErrorResponseDTO(errorMessage, exception.getClass(), Instant.now());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST); // Retorna um 400 (Bad Request)
     }
@@ -41,6 +40,12 @@ public class ExceptionHandlerController {
     public ResponseEntity<ErrorResponseDTO> handleResponseStatusException(ResponseStatusException exception) {
         ErrorResponseDTO error = new ErrorResponseDTO(exception.getReason(), exception.getClass(), Instant.now());
         return new ResponseEntity<>(error, exception.getStatusCode()); // Retorna o código de status da exceção
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponseDTO> handleIllegalArgumentException(IllegalArgumentException exception) {
+        ErrorResponseDTO error = new ErrorResponseDTO(exception.getMessage(), exception.getClass(), Instant.now());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST); // Retorna um 400 (Bad Request)
     }
 
     // Tratamento genérico de exceções internas do servidor
@@ -62,13 +67,6 @@ public class ExceptionHandlerController {
     public ResponseEntity<ErrorResponseDTO> handleTimeoutException(TimeoutException exception) {
         ErrorResponseDTO error = new ErrorResponseDTO("Tempo de espera esgotado", exception.getClass(), Instant.now());
         return new ResponseEntity<>(error, HttpStatus.REQUEST_TIMEOUT); // Retorna um 408 (Request Timeout)
-    }
-
-    // Tratamento de exceção quando há erro no servlet, geralmente causado por falhas no servidor
-    @ExceptionHandler(NestedServletException.class)
-    public ResponseEntity<ErrorResponseDTO> handleNestedServletException(NestedServletException exception) {
-        ErrorResponseDTO error = new ErrorResponseDTO("Erro no servlet", exception.getClass(), Instant.now());
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR); // Retorna um 500 (Internal Server Error)
     }
 
     // Tratamento de exceção quando a mensagem da requisição não pode ser lida (por exemplo, corpo malformado)
