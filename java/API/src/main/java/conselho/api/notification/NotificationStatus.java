@@ -1,7 +1,7 @@
 package conselho.api.notification;
 
 public enum NotificationStatus {
-    BOROWED,
+    BORROWED,
     CREATED,
     RETURNED,
     RETURNED_APPROVED,

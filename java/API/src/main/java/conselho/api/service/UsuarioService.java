@@ -13,8 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
-
-import static conselho.api.notification.NotificationStatus.BOROWED;
 import static conselho.api.notification.NotificationStatus.CREATED;
 
 @Service
@@ -31,7 +29,10 @@ public class UsuarioService {
             throw new IllegalArgumentException("Email já cadastrado");
         }
         Usuario usuario = mapper.toUsuario(usuarioDTO);
-        notificationService.sendNotification(usuario.getNome(), Notification.builder().status(CREATED).message(" Usuário cadastrado").build());
+        notificationService.sendNotification(
+                usuario.getId().toString(),
+                Notification.builder().status(CREATED).message("Usuário cadastrado").build()
+        );
         return mapper.toResponse(repository.save(usuario));
     }
 
