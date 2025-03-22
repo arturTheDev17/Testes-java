@@ -52,6 +52,7 @@ public class ExceptionHandlerController {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseDTO> handleGenericException(Exception exception) {
         ErrorResponseDTO error = new ErrorResponseDTO("Erro interno do servidor", exception.getClass(), Instant.now());
+        exception.printStackTrace();
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR); // Retorna um 500 (Internal Server Error)
     }
 

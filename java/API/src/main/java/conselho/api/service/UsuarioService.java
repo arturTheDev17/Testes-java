@@ -29,11 +29,12 @@ public class UsuarioService {
             throw new IllegalArgumentException("Email já cadastrado");
         }
         Usuario usuario = mapper.toUsuario(usuarioDTO);
+        Usuario savedUsuario = repository.save(usuario); // ✅ Salvar antes de acessar o ID
         notificationService.sendNotification(
-                usuario.getId().toString(),
+                savedUsuario.getId().toString(), // ✅ Agora o ID existe
                 Notification.builder().status(CREATED).message("Usuário cadastrado").build()
         );
-        return mapper.toResponse(repository.save(usuario));
+        return mapper.toResponse(savedUsuario);
     }
 
     // Buscar por ID (retorna DTO)
