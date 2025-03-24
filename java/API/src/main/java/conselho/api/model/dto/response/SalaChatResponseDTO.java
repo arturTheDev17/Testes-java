@@ -14,4 +14,5 @@ public class SalaChatResponseDTO {
 
     private Long id;
     private List<Usuario> usuarios;
+    private List<MensagemResponseDTO> mensagens;
 }

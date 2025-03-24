@@ -1,5 +1,6 @@
 package conselho.api.controller;
 
+import conselho.api.model.dto.mapper.SalaChatMapper;
 import conselho.api.model.entity.SalaChat;
 import conselho.api.model.dto.request.MensagemRequestDTO;
 import conselho.api.model.dto.response.MensagemResponseDTO;
@@ -19,15 +20,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChatController {
     private final ChatService chatService;
+    private final SalaChatMapper salaChatMapper;
 
     @PostMapping("/criar")
     public ResponseEntity<SalaChatResponseDTO> criarSalaChat(@RequestBody SalaChatRequestDTO salaChatRequestDTO) {
         SalaChat salaChat = chatService.criarSalaChat(salaChatRequestDTO.getUsuariosIds());
-        SalaChatResponseDTO response = new SalaChatResponseDTO(
-                salaChat.getId(),
-                salaChat.getUsuarios()
-        );
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(salaChatMapper.toResponse(salaChat)
+);
     }
 
     @PostMapping("/enviar")
@@ -39,13 +38,13 @@ public class ChatController {
     }
 
     @GetMapping("/historico")
-    public ResponseEntity<SalaChat> obterSalaChat(
+    public ResponseEntity<SalaChatResponseDTO> obterSalaChat(
             @RequestParam String email1,
             @RequestParam String email2) {
 
         // Busca ou cria a sala de chat entre os dois usuários
         SalaChat salaChat = chatService.buscarOuCriarSala(email1, email2);
 
-        return new ResponseEntity<>(salaChat, HttpStatus.OK);
+        return new ResponseEntity<>(salaChatMapper.toResponse(salaChat), HttpStatus.OK);
     }
 }
