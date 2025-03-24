@@ -1,8 +1,10 @@
 package conselho.api.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -30,6 +32,8 @@ public class Mensagem {
     @Column(nullable = false)
     private LocalDateTime dataEnvio;
 
-    @ManyToOne //TODO ARRUMAR DTO
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
     private SalaChat salaChat;
 }

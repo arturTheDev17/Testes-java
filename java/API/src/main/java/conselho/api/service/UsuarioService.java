@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import static conselho.api.notification.NotificationStatus.CREATED;
 
 @Service
@@ -55,8 +57,8 @@ public class UsuarioService {
 
     // Buscar entidade por email (uso interno)
     public Usuario getByEmail(String email) {
-        return repository.findByEmail(email)
-                .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado"));
+        Optional<Usuario> usuario = repository.findByEmail(email);
+        return usuario.orElseThrow(() -> new NoSuchElementException("Usuário com e-mail " + email + " não encontrado"));
     }
 
     // Atualizar usuário por ID

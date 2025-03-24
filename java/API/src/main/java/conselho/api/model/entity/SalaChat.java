@@ -26,13 +26,4 @@ public class SalaChat {
 
     @OneToMany(mappedBy = "salaChat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mensagem> mensagens;
-
-    private String nome;
-
-    @PrePersist
-    public void configurarSala() {
-        if (usuarios != null && usuarios.size() > 1) {
-            this.nome = usuarios.get(0).getNome() + " e " + usuarios.get(1).getNome(); // Definir nome da sala
-        }
-    }
 }

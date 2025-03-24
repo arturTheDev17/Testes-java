@@ -1,4 +1,0 @@
-package conselho.api.model.dto.request;
-
-public class SalaChatResponseDTO {
-}
